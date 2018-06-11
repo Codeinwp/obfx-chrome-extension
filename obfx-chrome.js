@@ -1,9 +1,11 @@
 console.log( 'OBFX Extension loaded' );
 
+let xhttp = new XMLHttpRequest();
 let els = document.querySelectorAll("a[href^='https://themes.trac.wordpress.org/changeset?']");
+let el = null;
 
 for ( let i = 0, l = els.length; i < l; i++ ) {
-	let el = els[i];
+	el = els[i];
 	let url = el.href;
 	console.log( url );
 
@@ -25,26 +27,30 @@ for ( let i = 0, l = els.length; i < l; i++ ) {
 	 * END DEBUG/TESTING
 	 */
 
-	let xhttp = new XMLHttpRequest();
-	xhttp.open( "POST", "https://dashboard.orbitfox.com/api/obfxhq/v1/updates/create", false );
+	xhttp.open( "POST", "https://dashboard.orbitfox.com/api/obfxhq/v1/updates/create", true );
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	xhttp.setRequestHeader("Accept", "application/json");
 	xhttp.send("theme=" + slug + "&current_version=" + old_version + "&next_version=" + new_version );
 
-	let result = JSON.parse( xhttp.responseText );
-	console.log( result );
-	if( result.data.gallery_url !== undefined ) {
-		let parent = el.parentElement;
-		parent.appendChild( document.createElement( 'br' ) );
-		parent.innerText = parent.innerText + 'Diff Gallery: ';
-		let newLink = document.createElement( 'a' );
-		newLink.href = result.data.gallery_url;
-		newLink.target = '_blank';
-		newLink.innerText = result.data.gallery_url;
-		parent.appendChild( newLink )
-	}
+	xhttp.addEventListener( "readystatechange", processRequest , false );
 }
 
+
+function processRequest( e ) {
+	if ( xhttp.readyState == 4 && xhttp.status == 200 ) {
+		let result = JSON.parse( xhttp.responseText );
+		console.log( result );
+		if( result.data.gallery_url !== undefined ) {
+			let parent = el.parentElement;
+			parent.innerHTML = parent.innerHTML + 'Diff Gallery: ';
+			let newLink = document.createElement( 'a' );
+			newLink.href = result.data.gallery_url;
+			newLink.target = '_blank';
+			newLink.innerText = result.data.gallery_url;
+			parent.appendChild( newLink )
+		}
+	}
+}
 
 
 function getUrlParams(search) {
