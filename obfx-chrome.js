@@ -42,7 +42,7 @@ function processRequest( e ) {
 		console.log( result );
 		if( result.data.gallery_url !== undefined ) {
 			let parent = el.parentElement;
-			parent.innerHTML = parent.innerHTML + 'Diff Gallery: ';
+			parent.innerHTML = parent.innerHTML + 'Visual diff with previous version: ';
 			let newLink = document.createElement( 'a' );
 			newLink.href = result.data.gallery_url;
 			newLink.target = '_blank';
