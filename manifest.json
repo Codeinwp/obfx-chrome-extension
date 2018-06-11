@@ -8,6 +8,11 @@
     "*://themes.trac.wordpress.org/ticket/*",
     "*://dashboard.orbitfox.com/api/obfxhq/v1/updates/create"
   ],
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  },
   "content_scripts": [
     {
       "matches": [
