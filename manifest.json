@@ -1,0 +1,13 @@
+{
+  "name": "OBFX Trac Helper",
+  "version": "1.0",
+  "description": "Extra functionality for Wordpress Trac",
+  "manifest_version": 2,
+  "permissions": ["tabs", "*://themes.trac.wordpress.org/ticket/*", "*://dashboard.orbitfox.com/api/obfxhq/v1/updates/create"],
+  "content_scripts": [
+    {
+      "matches": ["*://themes.trac.wordpress.org/ticket/*"],
+      "js": ["obfx-chrome.js"]
+    }
+  ]
+}
