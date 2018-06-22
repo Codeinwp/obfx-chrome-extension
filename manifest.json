@@ -1,11 +1,12 @@
 {
   "name": "WordPress.org Theme Trac Helper - by OrbitFox",
-  "version": "1.0",
+  "version": "1.2",
   "description": "Extra functionality for Wordpress Theme Trac",
   "manifest_version": 2,
   "permissions": [
     "tabs",
     "*://themes.trac.wordpress.org/ticket/*",
+    "https://themes.trac.wordpress.org/query?priority=theme+update&status=closed&status=new&status=reopened&keywords=!~buddypress&col=id&col=summary&col=status&col=priority&col=owner&col=time&col=changetime&col=reporter&report=1&desc=1&order=changetime",
     "*://dashboard.orbitfox.com/api/obfxhq/v1/updates/create"
   ],
   "icons": {
@@ -16,7 +17,8 @@
   "content_scripts": [
     {
       "matches": [
-        "*://themes.trac.wordpress.org/ticket/*"
+        "*://themes.trac.wordpress.org/ticket/*",
+        "https://themes.trac.wordpress.org/query?priority=theme+update&status=closed&status=new&status=reopened&keywords=!~buddypress&col=id&col=summary&col=status&col=priority&col=owner&col=time&col=changetime&col=reporter&report=1&desc=1&order=changetime"
       ],
       "js": [
         "obfx-chrome.js"
