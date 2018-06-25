@@ -1,4 +1,4 @@
-console.log('OBFX Extension loaded');
+console.log('Eyepatch Extension loaded');
 
 let xhttp = new XMLHttpRequest();
 let els = document.querySelectorAll("a[href^='https://themes.trac.wordpress.org/changeset?']");
@@ -107,7 +107,7 @@ function processRequestListing(e) {
 			if (placeholders[placeholder].innerText) {
 				let ticket_id = placeholders[placeholder].parentNode.parentNode.querySelector('.id').innerText.replace("#", '');
 				if (typeof  result.data[ticket_id] !== 'undefined') {
-						placeholders[placeholder].innerHTML = '<b><a href="' + result.data[ticket_id].gallery_url + '" target="_blank">' + result.data[ticket_id].global_diff + '%</a></b>';
+					placeholders[placeholder].innerHTML = '<b><a href="' + result.data[ticket_id].gallery_url + '" target="_blank">' + result.data[ticket_id].global_diff + '%</a></b>';
 				}
 			}
 		}
