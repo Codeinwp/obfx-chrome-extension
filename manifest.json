@@ -1,6 +1,6 @@
 {
   "name": "WordPress.org Theme Trac Helper - by Eyepatch",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Extra functionality for Wordpress Theme Trac",
   "manifest_version": 2,
   "permissions": [
@@ -13,6 +13,18 @@
     "16": "icon.png",
     "48": "icon.png",
     "128": "icon.png"
+  },
+  "browser_action": {
+    "default_icon": {
+      "16": "icon.png"
+    },
+    "default_title": "View themes trac"
+  },
+  "background": {
+    "scripts": [
+      "background.js"
+    ],
+    "persistent": false
   },
   "content_scripts": [
     {
